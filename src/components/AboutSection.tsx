@@ -1,32 +1,7 @@
 
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import React from 'react';
 
 const AboutSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
-
-  const services = [
-    {
-      number: '01',
-      title: 'OUTSTANDING FRONTEND',
-      description: 'Multiple backgrounds, personalities and expertise from all over the world come together to form leading-edge digital stellar capabilities.'
-    },
-    {
-      number: '02',
-      title: 'DRIVEN BY PASSION',
-      description: 'We love what we do. Our team is always on the lookout for the latest cutting-edge technologies to streamline our clients\' projects.'
-    },
-    {
-      number: '03',
-      title: 'PART OF YOUR TEAM',
-      description: 'Our team works together with your team to deliver the best possible experience for your users. Teamwork all the way.'
-    }
-  ];
-
   const skills = [
     { name: 'React/Next.js', level: 95 },
     { name: 'Node.js', level: 90 },
@@ -41,87 +16,16 @@ const AboutSection = () => {
     'MongoDB', 'Redis', 'Docker', 'AWS', 'Vercel', 'Git', 'Figma'
   ];
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const skillBars = skillsRef.current?.querySelectorAll('.skill-bar');
-
-    if (section) {
-      gsap.fromTo(section.querySelector('.about-text'),
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-          }
-        }
-      );
-
-      skillBars?.forEach((bar, index) => {
-        gsap.fromTo(bar,
-          { width: '0%' },
-          {
-            width: `${skills[index].level}%`,
-            duration: 1.2,
-            delay: index * 0.1,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: skillsRef.current,
-              start: 'top 80%',
-            }
-          }
-        );
-      });
-    }
-  }, []);
-
   return (
-    <section id="about" ref={sectionRef} className="py-32 relative bg-background">
+    <section id="about" className="py-24 bg-white" data-scroll-section>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-20">
-          <h2 className="text-6xl sm:text-8xl font-bold text-foreground mb-8 tracking-tight uppercase">
-            BRANDING<br />
-            <span className="text-muted-foreground">AND WEBSITE</span><br />
-            <span className="text-foreground">REDESIGN</span>
-          </h2>
-          <div className="h-1 w-24 bg-primary mb-8"></div>
-          <div className="max-w-2xl">
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              We are mobile app and web development company with offices in Los Angeles, San Francisco, New York 
-              and Prague creating apps for the top US startups and well established brands.
-            </p>
-          </div>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid lg:grid-cols-3 gap-12 mb-32">
-          {services.map((service, index) => (
-            <div key={index} className="group">
-              <div className="mb-6">
-                <div className="w-16 h-16 border-2 border-border rounded-full flex items-center justify-center text-muted-foreground font-mono text-sm group-hover:border-primary group-hover:text-primary transition-colors duration-300">
-                  No.<br />{service.number}
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-4 tracking-wider uppercase">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* About Text */}
-          <div className="about-text">
-            <h3 className="text-3xl font-bold text-foreground mb-8 tracking-wide uppercase">
-              Crafting Digital Experiences
-            </h3>
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
+          {/* Left Column */}
+          <div>
+            <h2 className="text-5xl font-bold text-gray-900 mb-8">
+              About Me
+            </h2>
+            <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
               <p>
                 I'm a passionate fullstack developer and web designer with over 5 years of experience 
                 creating exceptional digital experiences. My journey began with a fascination for how 
@@ -138,16 +42,15 @@ const AboutSection = () => {
               </p>
             </div>
 
-            {/* Tech Stack */}
             <div className="mt-12">
-              <h4 className="text-lg font-semibold text-foreground mb-6 tracking-wider uppercase">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Technologies I Use
-              </h4>
+              </h3>
               <div className="flex flex-wrap gap-3">
                 {tools.map((tool) => (
                   <span 
                     key={tool}
-                    className="px-4 py-2 bg-muted border border-border text-muted-foreground text-sm hover:bg-accent hover:text-accent-foreground transition-colors duration-200 uppercase tracking-wider"
+                    className="px-4 py-2 bg-gray-100 text-gray-700 text-sm border border-gray-200 hover:bg-gray-200 transition-colors duration-200"
                   >
                     {tool}
                   </span>
@@ -156,29 +59,46 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Skills */}
-          <div ref={skillsRef} className="space-y-8">
-            <h3 className="text-3xl font-bold text-foreground mb-12 tracking-wide uppercase">
+          {/* Right Column - Skills */}
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8">
               Skills & Expertise
             </h3>
-            {skills.map((skill, index) => (
-              <div key={skill.name} className="skill-item">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-foreground font-medium tracking-wider uppercase text-sm">
-                    {skill.name}
-                  </span>
-                  <span className="text-primary font-mono text-sm">
-                    {skill.level}%
-                  </span>
+            <div className="space-y-6">
+              {skills.map((skill) => (
+                <div key={skill.name} className="skill-item">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-gray-900 font-medium">
+                      {skill.name}
+                    </span>
+                    <span className="text-gray-600 text-sm">
+                      {skill.level}%
+                    </span>
+                  </div>
+                  <div className="h-2 bg-gray-200 overflow-hidden">
+                    <div 
+                      className="h-full bg-gray-900"
+                      style={{ width: `${skill.level}%` }}
+                    />
+                  </div>
                 </div>
-                <div className="h-px bg-border overflow-hidden">
-                  <div 
-                    className="skill-bar h-full bg-primary"
-                    style={{ width: '0%' }}
-                  />
-                </div>
+              ))}
+            </div>
+
+            <div className="mt-12">
+              <div className="bg-gray-50 p-8 border border-gray-200">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">Let's Connect</h4>
+                <p className="text-gray-600 mb-6">
+                  I'm always interested in hearing about new projects and opportunities.
+                </p>
+                <button 
+                  onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-6 py-3 bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-colors duration-200"
+                >
+                  Get In Touch
+                </button>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>

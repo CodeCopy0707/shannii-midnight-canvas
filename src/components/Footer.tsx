@@ -5,32 +5,59 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark-surface border-t border-gray-800 py-8">
+    <footer className="bg-gray-900 text-white py-16" data-scroll-section>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-xl font-bold text-gradient">Shannii</h3>
-            <p className="text-gray-400 text-sm mt-1">Fullstack Developer & Web Designer</p>
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <h3 className="text-2xl font-bold mb-4">Shannii</h3>
+            <p className="text-gray-400 mb-6 max-w-md">
+              Fullstack Developer & Web Designer creating exceptional digital experiences 
+              through innovative design and cutting-edge technology.
+            </p>
+            <div className="flex gap-4">
+              {['LinkedIn', 'Twitter', 'GitHub', 'Dribbble'].map((platform) => (
+                <a 
+                  key={platform}
+                  href="#"
+                  className="w-10 h-10 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-colors duration-200"
+                >
+                  <span className="text-sm font-medium">{platform[0]}</span>
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="flex items-center space-x-6">
-            <a href="#home" className="text-gray-400 hover:text-neon-cyan transition-colors duration-200">
-              Home
-            </a>
-            <a href="#about" className="text-gray-400 hover:text-neon-cyan transition-colors duration-200">
-              About
-            </a>
-            <a href="#projects" className="text-gray-400 hover:text-neon-cyan transition-colors duration-200">
-              Projects
-            </a>
-            <a href="#contact" className="text-gray-400 hover:text-neon-cyan transition-colors duration-200">
-              Contact
-            </a>
+          {/* Navigation */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
+            <ul className="space-y-2">
+              {['Home', 'About', 'Projects', 'Services', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a 
+                    href={`#${item.toLowerCase()}`} 
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Contact</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>hello@shannii.dev</li>
+              <li>+1 (555) 123-4567</li>
+              <li>San Francisco, CA</li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-500 text-sm">
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+          <p className="text-gray-500">
             © {currentYear} Shannii. All rights reserved. Built with React & TypeScript.
           </p>
         </div>

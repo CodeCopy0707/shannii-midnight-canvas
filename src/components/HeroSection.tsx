@@ -1,85 +1,47 @@
 
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Download } from 'lucide-react';
 
 const HeroSection = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const tl = gsap.timeline();
-
-    // Simple fade in animations
-    tl.fromTo(titleRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-    )
-    .fromTo(subtitleRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-      "-=0.4"
-    )
-    .fromTo(ctaRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-      "-=0.3"
-    );
-  }, []);
-
   const scrollToProjects = () => {
     document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-background">
-      <div ref={heroRef} className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <h1 
-          ref={titleRef}
-          className="text-6xl sm:text-8xl lg:text-9xl font-bold mb-8 leading-none tracking-tight text-foreground"
-        >
-          <span className="block">FULLSTACK</span>
-          <span className="block">DEVELOPER</span>
-          <span className="block text-muted-foreground">&</span>
-          <span className="block">WEB DESIGNER</span>
-        </h1>
-        
-        <div className="flex items-center justify-center mb-12">
-          <div className="h-px bg-border w-32"></div>
-          <ArrowRight className="mx-4 text-muted-foreground" size={24} />
-          <div className="h-px bg-border w-32"></div>
-        </div>
-        
-        <p 
-          ref={subtitleRef}
-          className="text-lg sm:text-xl text-muted-foreground mb-12 font-mono max-w-3xl mx-auto leading-relaxed"
-        >
-          Hi, I'm <span className="text-foreground font-semibold">Shannii</span> — Creating exceptional digital experiences 
-          with cutting-edge technologies and innovative design solutions
-        </p>
-
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button 
-            onClick={scrollToProjects}
-            className="group relative px-12 py-4 bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:bg-primary/90 uppercase tracking-wider text-sm"
-          >
-            <span className="relative z-10">Explore Work</span>
-          </button>
+    <section id="home" className="min-h-screen flex items-center justify-center bg-gray-50" data-scroll-section>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center">
+          <div className="mb-8">
+            <span className="inline-block px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-full mb-6">
+              Available for work
+            </span>
+          </div>
           
-          <button 
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-12 py-4 bg-transparent border-2 border-border text-foreground font-semibold transition-all duration-300 hover:bg-muted uppercase tracking-wider text-sm"
-          >
-            Let's Talk
-          </button>
-        </div>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black mb-8 leading-none text-gray-900">
+            FULLSTACK<br />
+            DEVELOPER<br />
+            <span className="text-gray-400">&</span><br />
+            DESIGNER
+          </h1>
+          
+          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+            I'm Shannii, a passionate developer who creates exceptional digital experiences 
+            through innovative design and cutting-edge technology.
+          </p>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2"></div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <button 
+              onClick={scrollToProjects}
+              className="group px-8 py-4 bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-colors duration-200 flex items-center gap-2"
+            >
+              View My Work
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
+            </button>
+            
+            <button className="px-8 py-4 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-colors duration-200 flex items-center gap-2">
+              <Download size={20} />
+              Download CV
+            </button>
           </div>
         </div>
       </div>
