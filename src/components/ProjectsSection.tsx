@@ -95,12 +95,11 @@ const ProjectsSection = () => {
     
     projectCards?.forEach((card, index) => {
       gsap.fromTo(card,
-        { opacity: 0, y: 100, scale: 0.9 },
+        { opacity: 0, y: 50 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 1,
+          duration: 0.8,
           delay: index * 0.1,
           ease: 'power2.out',
           scrollTrigger: {
@@ -113,22 +112,22 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} className="py-32 relative">
+    <section id="projects" ref={sectionRef} className="py-32 relative bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-20">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-6xl sm:text-8xl font-bold text-white mb-4 tracking-tight uppercase">
+              <h2 className="text-6xl sm:text-8xl font-bold text-foreground mb-4 tracking-tight uppercase">
                 PROJECTS
               </h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-neon-cyan to-neon-blue"></div>
+              <div className="h-1 w-24 bg-primary"></div>
             </div>
             <div className="text-right">
-              <p className="text-gray-400 text-lg font-mono">
+              <p className="text-muted-foreground text-lg font-mono">
                 SELECTED WORK
               </p>
-              <p className="text-neon-cyan font-bold text-xl">
+              <p className="text-primary font-bold text-xl">
                 2023 - 2024
               </p>
             </div>
@@ -144,10 +143,10 @@ const ProjectsSection = () => {
                 index % 2 === 0 ? '' : 'ml-auto'
               } ${project.featured ? 'lg:w-full' : 'lg:w-4/5'}`}
             >
-              <div className="relative bg-dark-surface border border-gray-800 overflow-hidden hover:border-neon-cyan/50 transition-all duration-500">
+              <div className="relative bg-card border border-border overflow-hidden hover:border-primary/50 transition-all duration-300">
                 {/* Project Number */}
                 <div className="absolute top-6 left-6 z-20">
-                  <span className="text-6xl font-bold text-gray-800 group-hover:text-neon-cyan/20 transition-colors duration-300">
+                  <span className="text-6xl font-bold text-muted group-hover:text-muted-foreground transition-colors duration-300">
                     {project.id.toString().padStart(2, '0')}
                   </span>
                 </div>
@@ -158,21 +157,21 @@ const ProjectsSection = () => {
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
                     
                     {/* Overlay Links */}
                     <div className="absolute top-6 right-6 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <a 
                         href={project.liveUrl}
-                        className="p-3 bg-dark-bg/80 backdrop-blur-sm text-neon-cyan hover:text-white hover:bg-neon-cyan/20 transition-colors duration-200"
+                        className="p-3 bg-background/80 backdrop-blur-sm text-primary hover:text-primary-foreground hover:bg-primary transition-colors duration-200"
                       >
                         <ExternalLink size={20} />
                       </a>
                       <a 
                         href={project.githubUrl}
-                        className="p-3 bg-dark-bg/80 backdrop-blur-sm text-neon-cyan hover:text-white hover:bg-neon-cyan/20 transition-colors duration-200"
+                        className="p-3 bg-background/80 backdrop-blur-sm text-primary hover:text-primary-foreground hover:bg-primary transition-colors duration-200"
                       >
                         <Code size={20} />
                       </a>
@@ -182,20 +181,20 @@ const ProjectsSection = () => {
                   {/* Content */}
                   <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
                     <div className="mb-4">
-                      <span className="text-neon-cyan text-sm font-mono tracking-wider uppercase">
+                      <span className="text-primary text-sm font-mono tracking-wider uppercase">
                         {project.category} • {project.year}
                       </span>
                     </div>
 
-                    <h3 className="text-3xl lg:text-4xl font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors duration-300 tracking-tight uppercase">
+                    <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300 tracking-tight uppercase">
                       {project.title}
                     </h3>
                     
-                    <p className="text-gray-500 text-lg mb-6 font-mono">
+                    <p className="text-muted-foreground text-lg mb-6 font-mono">
                       {project.subtitle}
                     </p>
 
-                    <p className="text-gray-300 mb-8 leading-relaxed">
+                    <p className="text-muted-foreground mb-8 leading-relaxed">
                       {project.description}
                     </p>
 
@@ -204,7 +203,7 @@ const ProjectsSection = () => {
                       {project.technologies.map((tech) => (
                         <span 
                           key={tech}
-                          className="px-3 py-1 text-xs bg-transparent border border-gray-600 text-gray-400 hover:border-neon-cyan hover:text-neon-cyan transition-colors duration-200 uppercase tracking-wider"
+                          className="px-3 py-1 text-xs bg-muted border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors duration-200 uppercase tracking-wider"
                         >
                           {tech}
                         </span>
@@ -215,14 +214,14 @@ const ProjectsSection = () => {
                     <div className="flex gap-6">
                       <a 
                         href={project.liveUrl}
-                        className="text-neon-cyan hover:text-white transition-colors duration-200 font-medium text-sm flex items-center gap-2 uppercase tracking-wider group/link"
+                        className="text-primary hover:text-foreground transition-colors duration-200 font-medium text-sm flex items-center gap-2 uppercase tracking-wider group/link"
                       >
                         <span>View Live</span>
                         <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform duration-200" />
                       </a>
                       <a 
                         href={project.githubUrl}
-                        className="text-gray-400 hover:text-neon-cyan transition-colors duration-200 font-medium text-sm flex items-center gap-2 uppercase tracking-wider group/link"
+                        className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium text-sm flex items-center gap-2 uppercase tracking-wider group/link"
                       >
                         <span>Source Code</span>
                         <Code size={16} />
@@ -230,9 +229,6 @@ const ProjectsSection = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/0 via-neon-cyan/5 to-neon-blue/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               </div>
             </div>
           ))}
@@ -240,17 +236,17 @@ const ProjectsSection = () => {
 
         {/* Let's Talk Section */}
         <div className="mt-32 text-center">
-          <h3 className="text-4xl sm:text-6xl font-bold text-white mb-8 tracking-tight uppercase">
+          <h3 className="text-4xl sm:text-6xl font-bold text-foreground mb-8 tracking-tight uppercase">
             LET'S TALK
           </h3>
           <div className="max-w-2xl mx-auto">
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
               WE LOVE WORKING ALONGSIDE AMBITIOUS BRANDS AND PEOPLE. 
               IF YOU'D LIKE US TO BUILD SOMETHING GREAT TOGETHER
             </p>
             <button 
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-12 py-4 bg-transparent border-2 border-neon-cyan text-neon-cyan font-semibold transition-all duration-300 hover:bg-neon-cyan hover:text-dark-bg uppercase tracking-wider text-sm"
+              className="px-12 py-4 bg-transparent border-2 border-primary text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-primary-foreground uppercase tracking-wider text-sm"
             >
               Start a Project
             </button>

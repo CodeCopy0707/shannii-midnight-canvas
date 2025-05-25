@@ -20,14 +20,14 @@ const Index = () => {
     // Refresh ScrollTrigger on load
     ScrollTrigger.refresh();
 
-    // Parallax effect for sections
+    // Simple fade in for sections
     const sections = document.querySelectorAll('section');
     sections.forEach((section) => {
       gsap.fromTo(section,
         { opacity: 0 },
         {
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           scrollTrigger: {
             trigger: section,
             start: 'top 90%',
@@ -45,7 +45,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-dark-bg text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navigation />
       <HeroSection />
       <AboutSection />
