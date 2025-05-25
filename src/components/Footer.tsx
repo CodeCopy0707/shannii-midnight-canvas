@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,16 +33,36 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Navigation</h4>
             <ul className="space-y-2">
-              {['Home', 'About', 'Projects', 'Services', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase()}`} 
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/projects" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 

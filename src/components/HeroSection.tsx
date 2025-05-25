@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ArrowRight, Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const scrollToProjects = () => {
@@ -30,13 +31,13 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button 
-              onClick={scrollToProjects}
+            <Link 
+              to="/projects"
               className="group px-8 py-4 bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-colors duration-200 flex items-center gap-2"
             >
               View My Work
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
-            </button>
+            </Link>
             
             <button className="px-8 py-4 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-colors duration-200 flex items-center gap-2">
               <Download size={20} />
