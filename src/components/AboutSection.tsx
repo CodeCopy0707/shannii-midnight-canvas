@@ -9,15 +9,31 @@ const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
 
+  const services = [
+    {
+      number: '01',
+      title: 'OUTSTANDING FRONTEND',
+      description: 'Multiple backgrounds, personalities and expertise from all over the world come together to form leading-edge digital stellar capabilities.'
+    },
+    {
+      number: '02',
+      title: 'DRIVEN BY PASSION',
+      description: 'We love what we do. Our team is always on the lookout for the latest cutting-edge technologies to streamline our clients\' projects.'
+    },
+    {
+      number: '03',
+      title: 'PART OF YOUR TEAM',
+      description: 'Our team works together with your team to deliver the best possible experience for your users. Teamwork all the way.'
+    }
+  ];
+
   const skills = [
     { name: 'React/Next.js', level: 95 },
     { name: 'Node.js', level: 90 },
     { name: 'TypeScript', level: 88 },
     { name: 'Python', level: 85 },
     { name: 'PostgreSQL', level: 82 },
-    { name: 'AWS/Cloud', level: 80 },
-    { name: 'Docker', level: 78 },
-    { name: 'GraphQL', level: 75 },
+    { name: 'AWS/Cloud', level: 80 }
   ];
 
   const tools = [
@@ -62,20 +78,50 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 relative">
+    <section id="about" ref={sectionRef} className="py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gradient mb-4">About Me</h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Passionate about creating innovative solutions that bridge design and technology
-          </p>
+        {/* Header */}
+        <div className="mb-20">
+          <h2 className="text-6xl sm:text-8xl font-bold text-white mb-8 tracking-tight uppercase">
+            BRANDING<br />
+            <span className="text-gray-600">AND WEBSITE</span><br />
+            <span className="text-gradient">REDESIGN</span>
+          </h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-neon-cyan to-neon-blue mb-8"></div>
+          <div className="max-w-2xl">
+            <p className="text-gray-300 text-lg leading-relaxed">
+              We are mobile app and web development company with offices in Los Angeles, San Francisco, New York 
+              and Prague creating apps for the top US startups and well established brands.
+            </p>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Services Grid */}
+        <div className="grid lg:grid-cols-3 gap-12 mb-32">
+          {services.map((service, index) => (
+            <div key={index} className="group">
+              <div className="mb-6">
+                <div className="w-16 h-16 border-2 border-gray-600 rounded-full flex items-center justify-center text-gray-600 font-mono text-sm group-hover:border-neon-cyan group-hover:text-neon-cyan transition-colors duration-300">
+                  No.<br />{service.number}
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4 tracking-wider uppercase">
+                {service.title}
+              </h3>
+              <p className="text-gray-400 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* About Text */}
           <div className="about-text">
-            <h3 className="text-2xl font-bold text-white mb-6">Crafting Digital Experiences</h3>
-            <div className="space-y-4 text-gray-300 leading-relaxed">
+            <h3 className="text-3xl font-bold text-white mb-8 tracking-wide uppercase">
+              Crafting Digital Experiences
+            </h3>
+            <div className="space-y-6 text-gray-300 leading-relaxed">
               <p>
                 I'm a passionate fullstack developer and web designer with over 5 years of experience 
                 creating exceptional digital experiences. My journey began with a fascination for how 
@@ -93,13 +139,15 @@ const AboutSection = () => {
             </div>
 
             {/* Tech Stack */}
-            <div className="mt-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Technologies I Use</h4>
-              <div className="flex flex-wrap gap-2">
+            <div className="mt-12">
+              <h4 className="text-lg font-semibold text-white mb-6 tracking-wider uppercase">
+                Technologies I Use
+              </h4>
+              <div className="flex flex-wrap gap-3">
                 {tools.map((tool) => (
                   <span 
                     key={tool}
-                    className="px-3 py-1 bg-dark-surface border border-neon-cyan/30 text-neon-cyan text-sm rounded-full hover:bg-neon-cyan/10 transition-colors duration-200"
+                    className="px-4 py-2 bg-transparent border border-gray-600 text-gray-400 text-sm hover:border-neon-cyan hover:text-neon-cyan transition-colors duration-200 uppercase tracking-wider"
                   >
                     {tool}
                   </span>
@@ -109,17 +157,23 @@ const AboutSection = () => {
           </div>
 
           {/* Skills */}
-          <div ref={skillsRef} className="space-y-6">
-            <h3 className="text-2xl font-bold text-white mb-8">Skills & Expertise</h3>
+          <div ref={skillsRef} className="space-y-8">
+            <h3 className="text-3xl font-bold text-white mb-12 tracking-wide uppercase">
+              Skills & Expertise
+            </h3>
             {skills.map((skill, index) => (
               <div key={skill.name} className="skill-item">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-white font-medium">{skill.name}</span>
-                  <span className="text-neon-cyan font-mono text-sm">{skill.level}%</span>
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-white font-medium tracking-wider uppercase text-sm">
+                    {skill.name}
+                  </span>
+                  <span className="text-neon-cyan font-mono text-sm">
+                    {skill.level}%
+                  </span>
                 </div>
-                <div className="h-2 bg-dark-surface rounded-full overflow-hidden">
+                <div className="h-px bg-gray-800 overflow-hidden">
                   <div 
-                    className="skill-bar h-full bg-gradient-to-r from-neon-cyan to-neon-blue rounded-full relative"
+                    className="skill-bar h-full bg-gradient-to-r from-neon-cyan to-neon-blue relative"
                     style={{ width: '0%' }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-neon-blue opacity-50 animate-pulse"></div>
