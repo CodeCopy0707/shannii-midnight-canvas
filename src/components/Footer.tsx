@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="text-2xl font-bold mb-4">Shannii</h3>
-            <p className="text-gray-400 mb-6 max-w-md">
+            <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
               Fullstack Developer & Web Designer creating exceptional digital experiences 
               through innovative design and cutting-edge technology.
             </p>
@@ -21,7 +21,7 @@ const Footer = () => {
                 <a 
                   key={platform}
                   href="#"
-                  className="w-10 h-10 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-colors duration-200"
+                  className="w-12 h-12 border border-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 hover:bg-gray-800 transition-all duration-200"
                 >
                   <span className="text-sm font-medium">{platform[0]}</span>
                 </a>
@@ -44,8 +44,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Projects
+                <Link to="/portfolio" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link to="/skills" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Skills
+                </Link>
+              </li>
+              <li>
+                <Link to="/resume" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Resume
                 </Link>
               </li>
               <li>
